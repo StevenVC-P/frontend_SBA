@@ -9,27 +9,33 @@ const childCount = document.getElementById("childCount");
 
 let familyCollection = []
 
+//main function
 const addFamily = () => {
     console.log("fired")
     console.log(familyCollection.length)
+
+    //checks the length of collection of families, if its 1 or greater it clears child elements to rebuild from fresh
     if (familyCollection.length >= 1) {
         innerBody.parentNode.removeChild(innerBody)
     }
 
+    //creates inner body that can be cleared without destroying any other information when clearing
     innerBody=document.createElement("div")
     innerBody.classList.add("container")
     body.append(innerBody)
 
+    //main object that forms each row of the table body
     const family = {
         familyName: familyName.value,
         primaryContact: primaryContact.value,
         childCount: childCount.value
     }
 
+    //adds information from the from to the family collection
     familyCollection.push(family)
-    
     console.log(familyCollection)
 
+    //creates all the necessary elements to correctly display each familily's information
     familyCollection.forEach(function(family,index) {
         console.log(family.familyName)
         console.log("index" + index)
@@ -65,6 +71,7 @@ const addFamily = () => {
     })
 }
 
+//button fires off for adding a family
 submit.addEventListener("click", function (e) {
     e.preventDefault();
     addFamily();

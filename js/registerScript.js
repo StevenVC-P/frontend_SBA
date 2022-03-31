@@ -1,9 +1,11 @@
 const submit = document.getElementById("registerForm");
 
+//regexp variable for different types
 const reNumbers = new RegExp("[0-9]+")
 const reEmail = new RegExp("@")
 const reSpecial = new RegExp("[!`#$%^&*]+")
 
+//reusable validate function
 const validate = (test, field, errorField, value) => {
     let error = document.getElementById(errorField);
     console.log(test);
@@ -21,6 +23,7 @@ const validate = (test, field, errorField, value) => {
     }
 }
 
+//main function for page
 const mainValidateFunction = () => {
     let userNameValue = document.getElementById("userName").value
     const reUserName = new RegExp("(" + reNumbers.source + ")|(" + reEmail.source + ")|(" + reSpecial.source + ")")
@@ -48,6 +51,7 @@ const mainValidateFunction = () => {
     }
 }
 
+//button that starts the validatation
 submit.addEventListener("click", function (e) {
     e.preventDefault();
     mainValidateFunction();
